@@ -11,9 +11,9 @@ def same_case(target, num):
     return target
 
 
-def diff_case(target, num1, num2, k):
+def diff_case(target, num1, num2):
     count = 0
-    for i in range(0, m):
+    for i in range(m):
         count += 1
         if count == k:
             target += num2
