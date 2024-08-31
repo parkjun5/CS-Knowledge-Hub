@@ -8,6 +8,7 @@
 
 ## 2. 세미나
 
+#### [2024_유스콘_리뷰](https://github.com/parkjun5/CS-Knowledge-Hub/blob/master/seminar/%EC%89%BD%EA%B2%8C_%ED%85%8C%EC%8A%A4%ED%8A%B8_%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0.md)
 #### [테스트_세미나](https://github.com/parkjun5/CS-Knowledge-Hub/blob/master/seminar/%EC%89%BD%EA%B2%8C_%ED%85%8C%EC%8A%A4%ED%8A%B8_%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0.md)
 #### [통합예외처리_세미나](https://github.com/parkjun5/CS-Knowledge-Hub/blob/master/seminar/%ED%85%8C%EC%8A%A4%ED%8A%B8.md)
 #### [코틀린_인액션_세미나_2부](https://github.com/parkjun5/CS-Knowledge-Hub/blob/master/seminar/Kotlin_2부.md)
