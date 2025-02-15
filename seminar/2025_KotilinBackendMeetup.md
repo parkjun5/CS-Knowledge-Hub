@@ -93,7 +93,37 @@ fun runBlocking(func: suspend () -> Unit) {
 - 코루틴의 상태머신 처리 방법?
 
 ### Glided Rose 리팩터링 챌린지
+Ktor 생태계?
 
+[Gilded Rose refactoring!](https://github.com/parkjun5/GildedRose-Refactoring-Kata.git)
+
+#### 목표
+1. 점진적인 리팩터링 해보기
+   - Ktlint plugin 으로 기본 포맷
+   - 나중에 한번 깔끔하게 정리하기
+2. 자주 사용하는 단축키
+
+빌드 & 실행
+- ⌘ + ⇧ + I : Gradle 새로고침 (Refresh Gradle)
+- ⌃ + ⌃ (Control 두 번) : Gradle 태스크 실행
+
+코드 편집
+- ⌃ + G : 동일한 문자열 선택
+- ⌘ + ⇧ + - : 클래스 내 모든 코드 블록 접기
+- ⌘ + ⌥ + P : 변수를 파라미터로 추출
+- ⌘ + F1 : 에러/경고 상세 설명 표시
+
+유용한 코틀린 문법
+- 숫자 범위 제한
+```kotlin
+// 값을 x와 y 사이로 제한
+number.coerceIn(x, y)
+```
+범례:
+- ⌘ (Command)
+- ⌥ (Option/Alt)
+- ⌃ (Control)
+- ⇧ (Shift)
 ### Spring Webflux Overview
 
 ### 신입 개발자의 Kotlin, Kotest 입문기
