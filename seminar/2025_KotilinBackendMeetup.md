@@ -44,13 +44,53 @@ gRPC와 kotlinx의 차이점:
 
 ###  코루틴 컴파일 과정 파헤치기
 
-### Glided Rose 리팩터링 챌린지***
-#### Corutine 
+#### Coroutine 컴파일 
+코루틴은 비동기 프로그래밍을 쉽게 하는 코틀린 문법
 경량 쓰레드 
 suspend 
 
 suspend lambda?
 
+```kotlin
+var continuation: Continuation<Unit>? = null
+
+suspend fun suspendIt(): Unit {
+  return suspendCoroutine<Unit>{ c ->
+    println(“Suspended”)
+    continuation = c
+  }
+}
+
+val cont = object : Continuation<Unit> {
+    override val context = EmptyCoroutineContext
+    override fun resumeWith(result: Result<Unit>) {
+        result.getOrThrow()
+    }
+}
+
+fun runBlocking(func: suspend () -> Unit) {
+    func.startCoroutine(cont)
+}
+
+ fun main() {
+    val lambda: suspend () -> Unit = {
+      suspendIt()
+      print(1)
+      suspendIt()
+      print(2)
+    }
+    
+   runBlocking { 
+       lambda()
+   }
+   continuation?.resume(Unit)
+   continuation?.resume(Unit)
+}
+
+```
+
+- COROUTINE_SUSPENDED? 
+- 코루틴의 상태머신 처리 방법?
 
 ### Glided Rose 리팩터링 챌린지
 
