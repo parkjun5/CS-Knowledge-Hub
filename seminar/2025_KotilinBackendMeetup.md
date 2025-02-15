@@ -125,5 +125,81 @@ number.coerceIn(x, y)
 - ⌃ (Control)
 - ⇧ (Shift)
 ### Spring Webflux Overview
+Servlet 
+Tomcat 내부 Connector 와 서블릿
+톰캣 내부 소켓과 쓰레드 1대1 매칭
+BIO Connector
+NIO Connector 와 Poller Thread
+
+Tomcat 이 NIO Connector 여도 서블릿이 동기라면 결국 문제가 발생
+Servlet Async API
+Async/NonBlocking API 서블릿이 전부 비동기라면 제공
+그래도 문제는 발생
+
+그래서 WebFlux가 만들어짐
+
+Armeria
+Client -> 하나의 JVM 내부에 Armeria -> Web 어쩌꾸 -> Spring WebHandler
+OIO 가 Blocking이 발생하는이유
+
+App 과 커럴 사이에 읽기 쓰기할때 커널에게 제어권을 넘겨뒀다가 반환하는 동안
+대기 발생!
+Buffer 상태를 알면 Blocking 을 피할수 있다?
+
+NIO OverView
+
+SocketChannel에서 Evnet 발생 감지!
+READ/WRITE가 준비 끝나면 그떄야 읽음
+
+Netty 병령성을 위해서 논리 코어 x 2
+
+Netty 
+자바 네트워크 프레임워크
+비동기로 동작하는 Event Loop
+Boss Event Group 싱글 쓰레이드 서버 소캣 채널
+
+
+이벤트 루프 --> 싱글 쓰레드 여러 소켓 채널을 가짐
+많이 어렵다..
+
+채널 인바운드 아웃바ㄷ운드 핸들러가 채널 파이프라인을 통해서 처리해준다!
+요청이 ACCEPT 되면 서버 소캣 채널이 생성된다.
+
+NIO 소캣 채널 생성
+Network에서 리드 라이트하면 채널을 사용한다
+
+이 채널 파이프라인은 해드와 테일을 기본으로 등록해서 사용
+채널의 생명주기와 같이 사용
+
+Netty EvnetLoop 
+파이프라인에 우리가 만든 로직이 담긴 이벤트 핸들러를 등록
+해드 -> 테일 인바운드
+테일 -> 헤드 아웃바운드
+
+인다운드와 아웃바운드를 넣는 방식으로 파이프라인을 실행
+들어오는 바이트나 종류에 따라 핸들러가 적용된다.
+핸들러마다 핸들러가 매번 생성됨 통상적으로
+
+Armeria 는 위에것부터 이해하고 봐야함..
 
 ### 신입 개발자의 Kotlin, Kotest 입문기
+Exposed? 
+테스트 더블?
+
+
+1. 테스트가 병렬 실행되도록
+2. Spring Context가 매번 새성?
+3. 의존성을 테스트 더블을 써서 테스트 비용을 줄이자
+
+#### 1. 테스트 병렬 실행
+AbstractProjectConfig 을 설정해주면 된다.
+
+정확히는 스펙들이 병렬로 실행
+
+쓰레드 갯수는 cpu 개수>> Runtime availableProcessors
+
+#### 2. Spring Context 
+캐싱해준다. 스프링에서  내부 값이 바뀌지 않는다면 캐시
+
+#### 3. 의존성을 테스트 더블을 써서 테스트 비용을 줄이자
+그냥 스터빙과 모킹인데 왜 이런 이름을 쓰지?
